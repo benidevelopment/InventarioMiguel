@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ <link href="{{ asset("css/personalizacion.css") }}" rel="stylesheet" type="text/css">
+<div class="navbar" id="categoriasNav">
+<h1 >Categorias</h1>
+<a href="{{url("categoria_nueva")}}"><button  type="button" class="btn btn-primary" >Nueva Categoria <div class="glyphicon glyphicon-plus"></div></button></a>
+
+</div>
+
+<div class="row">
+<form method="POST" action="{{ path('busca_action')}}">
+  <div class="col-md-3 col-sm-offset-6">
+      <div id="custom-search-imput">
+          <div class="input-group col-md-12">
+               <input name="consulta" type="search" class="form-control input-lg" placeholder="Buscar">
+                     <span class="input-group-btn">
+                          <button class="btn btn-info btn-lg" type="submit">
+                                  <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                      </span>
+          </div>
+      </div>
+  </div>
+</form>
+
+</br>
+
+
+
+
+</br>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-1">
+  <table class="table" >
+      <tr>
+        <th>Categoria</th>
+        <th>Información</th>
+        <th>Modificar</th>
+      </tr>
+        <tbody>
+    {% for categoria in categorias %}
+      <td>{{categoria.idcategoria}}</td>
+      <td>{{categoria.descripcion}}</td>
+      <td>
+      <a href="{{ url('categoria_editar',{'id':categoria.idcategoria}) }}"> <button  type="button" class="btn btn-primary" ><p class="glyphicon glyphicon-pencil"></p>Editar</button><a/>
+        <a  href="{{ url('categoria_borrar',{'id':categoria.idcategoria}) }}"><button  type="button" class="btn btn-primary" ><p class="glyphicon glyphicon-remove"></p>Borrar</button><a/>
+      </td>
+  </tr>
+   {% endfor %}
+   </tbody>
+    </div>
+  </div>
+</table>
+
+  {# seleccion de página #}
+<div class="navigation success">
+    {{ knp_pagination_render(categorias) }}
+</div>
+{% endblock body %}

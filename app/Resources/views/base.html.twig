@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset("cssbase/estilo.css") }}">
+  <link rel="stylesheet" href="{{ asset("csspersona/estilo.css") }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+   <link href="{{ asset("css/personalizacion.css") }}" rel="stylesheet" type="text/css">
+
+</head>
+
+{% block header %}
+<header>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+ <ul >
+     
+
+
+         <li>
+
+            <a  href="{{path('articulo_index')}}">ARTICULOS</a>
+
+         </li>
+          <li>
+
+            <a  href="{{path('ejemplar_index')}}">EJEMPLARES</a>
+
+         </li>
+
+           <li>
+
+            <a href="{{path('categoria_listado')}}">CATEGORIAS</a>
+
+           </li>
+
+           <li>
+
+            <a href="{{path('prestamo_index')}}">PRESTAMOS</a>
+
+           </li>
+
+           <li>
+
+            <a href="{{path('ubicacion_index')}}">UBICACIONES</a>
+
+           </li>
+        </ul>
+
+     
+  
+    </nav>
+
+
+
+</header>
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Articulo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idarticulo</th>
+                <td>{{ articulo.idarticulo }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ articulo.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Numejemplar</th>
+                <td>{{ articulo.numejemplar }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('articulo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('articulo_edit', { 'idarticulo': articulo.idarticulo }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

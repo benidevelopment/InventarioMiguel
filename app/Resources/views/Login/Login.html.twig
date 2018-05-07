@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset("bootstrap/css/bootstrap.min.css") }}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="{{ asset("bootstrap/js/bootstrap.min.js")}}"></script>
+       
+    </head>
+    <body class="pt-5">
+      <div class="container col-md-6 col-md-offset-3 mt-5 ">
+        <div class="fondo col-md-6 col-md-offset-3 mt-5" >
+          
+                <p class="form-title">
+                   LOGIN</p>
+
+                {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData,'security') }}</div>
+                {% endif %}
+
+                {{ form_start(formulario,{attr:{action:path("login_check_seguridad"), class:'login w-75 p-3'}}) }}
+                {{ form_row(formulario.username,{'full_name':'_username'})}}
+                {{ form_row(formulario.password,{'full_name':'_password'})}}
+                {{ form_end(formulario) }}
+        </div>
+    </div>
+  </body>
+ </html>

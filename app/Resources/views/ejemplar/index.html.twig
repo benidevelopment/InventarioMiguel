@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<link href="{{ asset("css/personalizacion.css") }}" rel="stylesheet" type="text/css">
+<div class="navbar" id="categoriasNav">
+<h1 >EJEMPLARES</h1>
+<a href="{{url("ejemplar_new")}}"><button  type="button" class="btn btn-primary" >Nuevo Ejemplar <div class="glyphicon glyphicon-plus"></div></button></a>
+
+</div>
+    
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idejemplar</th>
+                <th>Identificacion</th>
+                <th>Fechaalta</th>
+                <th>Prestado</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ejemplar in ejemplars %}
+            <tr>
+                <td><a href="{{ path('ejemplar_show', { 'idejemplar': ejemplar.idejemplar }) }}">{{ ejemplar.idejemplar }}</a></td>
+                <td>{{ ejemplar.identificacion }}</td>
+                <td>{% if ejemplar.fechaalta %}{{ ejemplar.fechaalta|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if ejemplar.prestado %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ejemplar_show', { 'idejemplar': ejemplar.idejemplar }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ejemplar_edit', { 'idejemplar': ejemplar.idejemplar }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ejemplar_new') }}">Create a new ejemplar</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<link href="{{ asset("css/personalizacion.css") }}" rel="stylesheet" type="text/css">
+  
+<div class="navbar" id="categoriasNav">
+ <h2>Listado de Articulos</h2>  <a href="{{ path('articulo_new') }}">Articulo nuevo</a>
+
+</div>
+    <div class="row">
+<form method="POST" action="{{ path('busca_articulo')}}">
+  <div class="col-md-3 col-sm-offset-6">
+      <div id="custom-search-imput">
+          <div class="input-group col-md-12">
+               <input name="consulta" type="search" class="form-control input-lg" placeholder="Buscar">
+                     <span class="input-group-btn">
+                          <button class="btn btn-info btn-lg" type="submit">
+                                  <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                      </span>
+          </div>
+      </div>
+  </div>
+</form>
+
+</br>
+    <div class="row">
+    <div class="col-sm-8 col-sm-offset-1">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Numejemplar</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for articulo in listaarticulos %}
+            <tr>
+                <td><a href="{{ path('articulo_show', { 'idarticulo': articulo.idarticulo }) }}">{{ articulo.idarticulo }}</a></td>
+                <td>{{ articulo.descripcion }}</td>
+                <td>{{ articulo.numejemplar }}</td>
+                <td>                        
+                    <a href="{{ path('articulo_show', { 'idarticulo': articulo.idarticulo }) }}"><button  type="button" class="btn btn-success" > <div class="glyphicon glyphicon-eye-open"></div>Mostrar</button></a> 
+                    <a href="{{ path('articulo_edit', { 'idarticulo': articulo.idarticulo }) }}"><button  type="button" class="btn btn-success" > <div class="glyphicon glyphicon-pencil"></div>Editar</button></a>          
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+     <div class="navigation success">
+    {{ knp_pagination_render(listaarticulos) }}
+    </div>
+    </div>
+    </div>
+       
+        
+{% endblock %}

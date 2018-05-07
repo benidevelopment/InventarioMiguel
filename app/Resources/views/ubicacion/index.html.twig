@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <link href="{{ asset("css/personalizacion.css") }}" rel="stylesheet" type="text/css">
+<div class="navbar" id="categoriasNav">
+<h1 >UBICACIONES</h1>
+<a href="{{url("ubicacion_new")}}"><button  type="button" class="btn btn-primary" >Nueva Ubicacion <div class="glyphicon glyphicon-plus"></div></button></a>
+</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idubicacion</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ubicacion in ubicacions %}
+            <tr>
+                <td><a href="{{ path('ubicacion_show', { 'idubicacion': ubicacion.idubicacion }) }}">{{ ubicacion.idubicacion }}</a></td>
+                <td>{{ ubicacion.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ubicacion_show', { 'idubicacion': ubicacion.idubicacion }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ubicacion_edit', { 'idubicacion': ubicacion.idubicacion }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ubicacion_new') }}">Create a new ubicacion</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   <link href="{{ asset("css/personalizacion.css") }}" rel="stylesheet" type="text/css">
+<div class="navbar" id="categoriasNav">
+<h1 >PRESTAMOS</h1>
+<a href="{{url("prestamo_new")}}"><button  type="button" class="btn btn-primary" >Nuevo Prestamo <div class="glyphicon glyphicon-plus"></div></button></a>
+</div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idprestamo</th>
+                <th>Fechainicio</th>
+                <th>Fechafin</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prestamo in prestamos %}
+            <tr>
+                <td><a href="{{ path('prestamo_show', { 'idprestamo': prestamo.idprestamo }) }}">{{ prestamo.idprestamo }}</a></td>
+                <td>{% if prestamo.fechainicio %}{{ prestamo.fechainicio|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if prestamo.fechafin %}{{ prestamo.fechafin|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ prestamo.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('prestamo_show', { 'idprestamo': prestamo.idprestamo }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('prestamo_edit', { 'idprestamo': prestamo.idprestamo }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('prestamo_new') }}">Create a new prestamo</a>
+        </li>
+    </ul>
+{% endblock %}

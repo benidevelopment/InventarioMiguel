@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<link href="{{ asset("css/personalizacion.css") }}" rel="stylesheet" type="text/css">
+<div class="navbar" id="categoriasNav">
+<h1 >Resultado de la búsqueda</h1>
+
+</div>
+
+<div class="row">
+<div class="col-sm-8 col-sm-offset-1">
+<div class="cuerpo">
+
+  {# <div class="well well-sm">
+    <h1 class="glyphicon glyphicon-user"> Articulos</h1>
+    <br>
+    <br>
+    <a href="{{url("articulo_nuevo")}}"><button  type="button" class="btn btn-primary" >Nuevo Articulo <div class="glyphicon glyphicon-plus"></div></button></a>
+  </div>
+  </div>
+  </div>
+  </div> #}
+
+
+  <div class="row">
+  <div class="col-sm-8 col-sm-offset-1">
+  <table class="table " >
+  <tr class="info">
+    <th>Categoria</th>
+    <th>Articulo</th>
+    <th>Numero de ares</th>
+  </tr>
+  {% for articulo in listaarticulos %}
+        
+          {# {% if articulo.idArticulo == categoria.idcategoria %}
+         
+        <td>{{categoria.descripcion}}</td>
+
+         
+          {% endif %}
+
+           {% endfor %} #}
+
+
+
+    
+    <td>{{articulo.descripcion}}</td>
+    <td>{{articulo.NumEjemplar}}</td>
+    <td>
+      <button  type="button" class="btn btn-primary" ><p class="glyphicon glyphicon-pencil"></p>Editar</button>
+      <button  type="button" class="btn btn-primary disabled" ><p class="glyphicon glyphicon-floppy-disk"></p>Gurdar</button>
+    </td>
+  </tr>
+   {% endfor %}
+   </table>
+    
+  </div>
+
+{% endblock body %}
