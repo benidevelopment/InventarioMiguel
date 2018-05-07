@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bajas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idejemplar</th>
+                <th>Identificacion</th>
+                <th>Fechabaja</th>
+                <th>Prestado</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for baja in bajas %}
+            <tr>
+                <td><a href="{{ path('baja_show', { 'idejemplar': baja.idejemplar }) }}">{{ baja.idejemplar }}</a></td>
+                <td>{{ baja.identificacion }}</td>
+                <td>{% if baja.fechabaja %}{{ baja.fechabaja|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if baja.prestado %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('baja_show', { 'idejemplar': baja.idejemplar }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('baja_edit', { 'idejemplar': baja.idejemplar }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('baja_new') }}">Create a new baja</a>
+        </li>
+    </ul>
+{% endblock %}

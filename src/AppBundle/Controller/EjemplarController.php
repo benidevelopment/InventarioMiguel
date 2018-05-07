@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Ejemplar;
+use AppBundle\Entity\Baja;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -132,5 +133,36 @@ class EjemplarController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    /**
+     * Displays a form to DAR DE BAJA an existing ejemplar entity.
+     *
+     * @Route("/{idejemplar}/baja", name="ejemplar_baja")
+     * @Method({"GET", "POST"})
+     */
+    public function BajaAction(Request $request, Ejemplar $ejemplar)
+    {
+        $ejemplarADarDeBaja=$ejemplar;
+        $idEjemplarABorrar=$ejemplar->getIdejemplar();
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($ejemplar);
+        $em->flush();
+        $baja = new Baja();
+        $baja->setIdejemplar( $ejemplarADarDeBaja->getIdejemplar());
+        $baja->setFechaBaja(new \DateTime());
+        $baja->setPrestado( $ejemplarADarDeBaja->getPrestado());
+        $baja->setArticuloarticulo( $ejemplarADarDeBaja->getArticuloarticulo());
+        $baja->setPrestamoprestamo( $ejemplarADarDeBaja->getPrestamoprestamo());
+        $baja->setUbicacionubicacion( $ejemplarADarDeBaja->getUbicacionubicacion());
+        $baja->setIdentificacion( $ejemplarADarDeBaja->getIdentificacion());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($baja);
+            $em->flush();
+           
+            $em = $this->getDoctrine()->getManager();
+            
+                    $bajas = $em->getRepository('AppBundle:Baja')->findAll();
+       
+        return $this->render('baja');
     }
 }

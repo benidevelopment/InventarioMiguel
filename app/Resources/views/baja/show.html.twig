@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Baja</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idejemplar</th>
+                <td>{{ baja.idejemplar }}</td>
+            </tr>
+            <tr>
+                <th>Identificacion</th>
+                <td>{{ baja.identificacion }}</td>
+            </tr>
+            <tr>
+                <th>Fechabaja</th>
+                <td>{% if baja.fechabaja %}{{ baja.fechabaja|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Prestado</th>
+                <td>{% if baja.prestado %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('baja_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('baja_edit', { 'idejemplar': baja.idejemplar }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

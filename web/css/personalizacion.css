@@ -19,13 +19,20 @@ div h1
 	width:100%;
 	box-sizing: border-box;
 }
-
+h1
+{
+    color:#FFFFFF; 
+}
+div label
+{
+    color:#FFFFFF; 
+}
 body
 {
     font-family:"ROCKWELL";
     font-size: 16pt;
     font-weight: 5PX;
-    color:rgb(255, 255, 255);
+    color:rgb(15, 12, 12);
     background-image: url(../imagenes/fondo.jpg);
     background-position: center;
 	background-repeat: no-repeat;
