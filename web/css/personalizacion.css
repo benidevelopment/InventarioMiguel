@@ -115,3 +115,66 @@ nav ul li a:hover
 {
     background-color: grey;
 }
+
+#BotonImprimir
+{
+	font-family: "ZOMBIEBITES";
+	float:left;
+	height:74px;
+	width:100%;
+	border: #fff solid 4px;
+	cursor: pointer;
+	background-color: #00a0f4;
+	color:white;
+	font-size: 28px;
+	font-weight: 670;
+	padding-top:16px;
+	padding-bottom: 16px;
+	transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	background-image:  url(../imagenes/impresion.jpg);
+	background-size: 40px 40px;
+	background-position: 15px 15px;
+	background-repeat: no-repeat;
+}
+#BotonImprimir:hover
+{
+	background-color: rgba(0,0,0,0);
+	color:#000;
+}
+.transicion
+{
+	width:0px;
+	height:74px;
+	background-color:#33de80;
+	-moz-transition:  0.7s ease;
+	-o-transition:  0.7s ease;
+	-ms-transition:  0.7s ease;
+	-webkit-transition:  0.7s ease;
+	
+}
+.BotonImprimir:hover .transicion
+{
+	width:100%;
+
+	background-color:#33de80;
+}
+
+.contenedor-tabla
+{
+	width:750px;
+	background-color: rgba(0, 0, 0, 0.51);/*negro con opacidad del 51%*/
+	padding:35px 45px 35px 50px;
+	margin:auto;
+	margin-top:65px;
+	border-radius: 9px;
+}
+.capa
+{
+    border-radius:30px;
+	width:100%;
+	height: 20%;
+}
