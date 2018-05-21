@@ -133,4 +133,5 @@ class Articulo
          $descripcion = $this->descripcion;
          return (string) $descripcion ;
        }
+       
 }

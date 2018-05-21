@@ -46,6 +46,7 @@
                 <th>Id</th>
                 <th>Descripcion</th>
                 <th>Numejemplar</th>
+                <th>Categoria</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -55,6 +56,7 @@
                 <td><a href="{{ path('articulo_show', { 'idarticulo': articulo.idarticulo }) }}">{{ articulo.idarticulo }}</a></td>
                 <td>{{ articulo.descripcion }}</td>
                 <td>{{ articulo.numejemplar }}</td>
+                <td>{{ articulo.categoriacategoria }}</td>
                 <td>                        
                     <a href="{{ path('articulo_show', { 'idarticulo': articulo.idarticulo }) }}"><button  type="button" class="btn btn-success" > <div class="glyphicon glyphicon-eye-open"></div>Mostrar</button></a> 
                     <a href="{{ path('articulo_edit', { 'idarticulo': articulo.idarticulo }) }}"><button  type="button" class="btn btn-success" > <div class="glyphicon glyphicon-pencil"></div>Editar</button></a>          

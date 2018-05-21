@@ -234,6 +234,7 @@ class ArticuloController extends Controller
         <p class=MsoNormal align=center style='text-align:center'><b><span
         style='font-size:10.0pt;font-family:".+"Arial".",sans-serif'>{NUMEJ1</span></b></p>
         </td>  
+        
        </tr>    <!--fila*-->";
 
        $datos=$query->getResult();
